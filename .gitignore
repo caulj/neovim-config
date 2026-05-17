@@ -1,0 +1,28 @@
+# macOS / Windows junk
+.DS_Store
+Thumbs.db
+
+# Neovim swap/backup/session files
+*.swp
+*.swo
+*.swn
+*.tmp
+*~
+Session.vim
+
+# Vscode Related Files
+.vscode
+
+# Local-only config overrides
+lua/config/local.lua
+lua/local.lua
+local.lua
+
+# Environment/secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Logs
+*.log
