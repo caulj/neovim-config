@@ -10,38 +10,55 @@ return {
 			end,
 		},
 	},
-	cmd = "Telescope", -- Lazy-load when the :Telescope command is used
+
+	cmd = "Telescope",
+
 	keys = {
-		{ "<leader>ff", ":Telescope find_files<CR>", desc = "Find Files" },
-		{ "<leader>fg", ":Telescope live_grep<CR>", desc = "Live Grep" },
-		{ "<leader>fb", ":Telescope buffers<CR>", desc = "Find Buffers" },
-		{ "<leader>b", ":Telescope buffers<CR>", desc = "Show Buffers" },
-		{ "<leader>fh", ":Telescope help_tags<CR>", desc = "Find Help" },
+		{ "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "Find Files" },
+		{ "<leader>fg", "<cmd>Telescope live_grep<CR>",  desc = "Live Grep" },
+		{ "<leader>fb", "<cmd>Telescope buffers<CR>",    desc = "Find Buffers" },
+		{ "<leader>b",  "<cmd>Telescope buffers<CR>",    desc = "Show Buffers" },
+		{ "<leader>fh", "<cmd>Telescope help_tags<CR>",  desc = "Find Help" },
 	},
-	opts = {
-		defaults = {
-			mappings = {
-				i = {
-					["<C-j>"] = require("telescope.actions").move_selection_next, -- Move down with Ctrl + J
-					["<C-k>"] = require("telescope.actions").move_selection_previous, -- Move up with Ctrl + K
+
+	opts = function()
+		local actions = require("telescope.actions")
+
+		return {
+			defaults = {
+				mappings = {
+					i = {
+						["<C-j>"] = actions.move_selection_next,
+						["<C-k>"] = actions.move_selection_previous,
+					},
 				},
 			},
-		},
-		pickers = {
-			buffers = {
-				sort_lastused = true, -- Sort buffers by last used
+
+			pickers = {
+				find_files = {
+					-- hidden = true
+				},
+				buffers = {
+					sort_lastused = true,
+				},
 			},
-		},
-		extensions = {
-			fzf = {
-				fuzzy = true,
-				override_generic_sorter = true,
-				override_file_sorter = true,
-				case_mode = "smart_case",
+
+			extensions = {
+				fzf = {
+					fuzzy = true,
+					override_generic_sorter = true,
+					override_file_sorter = true,
+					case_mode = "smart_case",
+				},
 			},
-		},
-	},
-	init = function()
-		require("telescope").load_extension("fzf")
+		}
+	end,
+
+	config = function(_, opts)
+		local telescope = require("telescope")
+
+		telescope.setup(opts)
+
+		pcall(telescope.load_extension, "fzf")
 	end,
 }

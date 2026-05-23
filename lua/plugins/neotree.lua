@@ -9,9 +9,9 @@ return {
 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
 	},
 	keys = {
-		{ "<leader>dd", ":Neotree toggle<CR>", desc = "Open Nvim Tree" },
-		{ "<leader>df", ":Neotree focus<CR>", desc = "Focus Nvim Tree" },
-		{ "<leader>db", ":Neotree buffers<CR>", desc = "Open Buffers" },
+		{ "<leader>dd", ":Neotree toggle<CR>",     desc = "Open Nvim Tree" },
+		{ "<leader>df", ":Neotree focus<CR>",      desc = "Focus Nvim Tree" },
+		{ "<leader>db", ":Neotree buffers<CR>",    desc = "Open Buffers" },
 		{ "<leader>dg", ":Neotree git_status<CR>", desc = "Open Git Status" },
 	},
 	opts = {
@@ -24,6 +24,10 @@ return {
 			width = 30,
 		},
 		filesystem = {
+			filtered_items = {
+				visible = true,
+				hide_dotfiles = false,     -- show hidden files
+			},
 			hijack_netrw_behavior = "open_current", -- netrw disabled, opening a directory opens neo-tree
 			-- in whatever position is specified in window.position
 			-- "open_current",  -- netrw disabled, opening a directory opens within the

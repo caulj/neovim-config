@@ -30,6 +30,8 @@ return {
 			sh = { "shfmt" },
 			bash = { "shfmt" },
 			cmake = { "cmake_format" },
+			css = { "php_cs_fixer" },
+			php = { "php_cs_fixer" },
 		},
 		-- Set default options
 		default_format_opts = {

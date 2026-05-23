@@ -1,5 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
+	branch = "master",
 	build = ":TSUpdate",                  -- Ensures Parses stays updated
 	event = { "BufReadPost", "BufNewFile" }, -- Load Treesitter on buffer events
 	main = "nvim-treesitter.configs",
@@ -37,5 +39,5 @@ return {
 			"xml",
 			"yaml",
 		},
-	}
+	},
 }
